@@ -33,7 +33,8 @@ const Home = () => {
         <p>Here are the features to implement:</p>
         <ul>
           <li>
-            Implement a service to generate availabilities of a practitioner.
+            Complete an existing service (ProAvailabilityService.java) to generate availabilities of a practitioner. 
+            Availabilities are calculated when you start the server by the method 
           </li>
           <li>Create appointments.</li>
         </ul>

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "SERVER_API_ENDPOINT=http://localhost:8080 next dev",
+    "dev": "next dev",
     "lint": "eslint --ext .tsx,.ts --fix src/",
     "start": "next start"
   },
