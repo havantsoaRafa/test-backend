@@ -1,5 +1,6 @@
 package com.maiia.pro.configuration;
 
+import com.maiia.pro.dtos.mappers.CustomMapper;
 import com.maiia.pro.entity.Patient;
 import com.maiia.pro.entity.Practitioner;
 import com.maiia.pro.entity.TimeSlot;
@@ -7,10 +8,12 @@ import com.maiia.pro.repository.PatientRepository;
 import com.maiia.pro.repository.PractitionerRepository;
 import com.maiia.pro.repository.TimeSlotRepository;
 import com.maiia.pro.service.ProAvailabilityService;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDateTime;
@@ -32,6 +35,13 @@ public class CommandLineStartupRunner implements CommandLineRunner {
 
     @Autowired
     private ProAvailabilityService proAvailabilityService;
+
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper mapper = new ModelMapper();
+        mapper.addMappings(CustomMapper.skipIDFieldsMap);
+        return mapper;
+    }
 
     @Override
     public void run(String... args) {
