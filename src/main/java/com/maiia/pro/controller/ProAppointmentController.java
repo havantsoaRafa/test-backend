@@ -1,6 +1,7 @@
 package com.maiia.pro.controller;
 
 import com.maiia.pro.dtos.AppointmentDTO;
+import com.maiia.pro.dtos.validation.AppointmentValidator;
 import com.maiia.pro.entity.Appointment;
 import com.maiia.pro.service.ProAppointmentService;
 import io.swagger.annotations.ApiOperation;
@@ -44,7 +45,7 @@ public class ProAppointmentController {
     @ApiOperation(value = "Add all appointments")
     @PostMapping
     public AppointmentDTO addAppointments(@RequestBody AppointmentDTO appointmentDTO) {
-
+        AppointmentValidator.validate(appointmentDTO);
         Appointment appointment = modelMapper.map(appointmentDTO, Appointment.class);
         return modelMapper.map(proAppointmentService.add(appointment), AppointmentDTO.class);
     }
